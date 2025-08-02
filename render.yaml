@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: springboot-backend
+    env: java
+    plan: free
+    buildCommand: ./mvnw clean install
+    startCommand: java -jar target/*.jar
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+      - key: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+        value: org.h2.Driver
+      - key: SPRING_DATASOURCE_USERNAME
+        value: sa
+      - key: SPRING_DATASOURCE_PASSWORD
+        value: 
+      - key: SPRING_JPA_DATABASE_PLATFORM
+        value: org.hibernate.dialect.H2Dialect
+      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
+        value: update
